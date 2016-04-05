@@ -16,7 +16,8 @@ public class AdjMatrixGraph implements Graph{
   private boolean[][] adjMatrix;
   private int vertices;
   private int edges;  
-  
+  private Vertex vertexList[];
+
   /**
    *  Constructs a graph with n vertices and no edges.
    */
@@ -97,14 +98,17 @@ public class AdjMatrixGraph implements Graph{
     return s;
   }
 
-
-
-    
-    
-
-    @Override
-    public int addVertex(Vertex v) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public boolean addVertex(Vertex v) {
+        boolean isAdd = false;
+        int i = 0;
+        do {
+        	if (vertexList[i] == null) {
+        		vertexList[i] = v;
+        		isAdd = true;
+        	}
+        	i++;
+        } while (i <= vertices && isAdd == false);
+        return isAdd;
     }
 
     @Override
